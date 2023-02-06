@@ -30,7 +30,7 @@ def test(shuffle):
     search_time = []
     search_rb_time = []
 
-    for i in range(1, 5):
+    for i in range(1, 10): ## dovrebbe essere 1000
         n = i * 1000
         print("Il numero di chiavi è pari a: ", n)
         keys = np.arange(n)
@@ -91,6 +91,10 @@ def test(shuffle):
         plot_2.savefig('img//w_case/s.png')
         plot_3.savefig('img/w_case/h.png')
 
+    plt.clf()
+    plot_1.clear()
+    plot_2.clear()
+    plot_3.clear()
 
 
 def main():
