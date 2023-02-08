@@ -10,17 +10,17 @@ def insertion_test(t, keys, n):
     for j in range(n):
         t.insert(keys[j])
     end = timer()
-    return round(end - start, 6)
+    return round(end - start, 8)
 
 
 def search_test(t, key):
     start = timer()
     t.find(key)
     end = timer()
-    return round(end - start, 6)
+    return round(end - start, 8)
 
 
-def test(shuffle):
+def test(shuffle=False):
     t = BST()
     t_rb = RBT()
     height = []
@@ -98,7 +98,7 @@ def test(shuffle):
 
 
 def main():
-    test(False)
+    test()
     test(True)
 
 
