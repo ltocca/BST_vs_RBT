@@ -3,6 +3,7 @@ from BST import BST
 import matplotlib.pyplot as plt
 import numpy as np
 from timeit import default_timer as timer
+from scipy.interpolate import splrep, splev
 
 
 def insertion_test(t, keys, n):
@@ -20,7 +21,13 @@ def search_test(t, key):
     return round(end - start, 8)
 
 
-def test(shuffle=False):
+def spline(x, y, p=2):  # implementazione bspline al fine di approssimare l'andamento dei grafici
+    bspl = splrep(x, y, p)
+    s = splev(x, bspl)
+    return s
+
+
+def test(shuffle=False, m=100):
     t = BST()
     t_rb = RBT()
     height = []
@@ -30,8 +37,8 @@ def test(shuffle=False):
     search_time = []
     search_rb_time = []
 
-    for i in range(0, 100):
-        n = 1000 + i * 1000
+    for i in range(1, m):
+        n = i * 1000
         print("Il numero di chiavi è pari a: ", n)
         keys = np.arange(n)
         if shuffle:
@@ -50,8 +57,8 @@ def test(shuffle=False):
     x = np.arange(1, len(ins_time) + 1) * 1000
 
     plot_1 = plt.figure(1)
-    plt.plot(x, ins_time)
-    plt.plot(x, ins_rb_time)
+    plt.plot(x, spline(x, ins_time, 3))
+    plt.plot(x, spline(x, ins_rb_time, 3))
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di inserimento (in s)")
     plt.legend(["ABR", "ARN"])
@@ -61,8 +68,8 @@ def test(shuffle=False):
         plt.title("Confronto tempi inserimento: caso peggiore")
 
     plot_2 = plt.figure(2)
-    plt.plot(x, search_time)
-    plt.plot(x, search_rb_time)
+    plt.plot(x, spline(x, search_time))
+    plt.plot(x, spline(x, search_rb_time))
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di ricerca (in s)")
     plt.legend(["ABR", "ARN"])
@@ -98,7 +105,7 @@ def test(shuffle=False):
 
 
 def main():
-    test()
+    # test()
     test(True)
 
 
