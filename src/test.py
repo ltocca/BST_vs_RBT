@@ -30,8 +30,8 @@ def test(shuffle=False):
     search_time = []
     search_rb_time = []
 
-    for i in range(1, 50): ## dovrebbe essere 1000
-        n = i * 10000
+    for i in range(0, 100):
+        n = 1000 + i * 1000
         print("Il numero di chiavi è pari a: ", n)
         keys = np.arange(n)
         if shuffle:
@@ -47,7 +47,7 @@ def test(shuffle=False):
         height.append(t.height())
         height_rb.append(t_rb.height())
 
-    x = np.arange(1, len(ins_time) + 1) * 10000
+    x = np.arange(1, len(ins_time) + 1) * 1000
 
     plot_1 = plt.figure(1)
     plt.plot(x, ins_time)
