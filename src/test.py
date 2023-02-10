@@ -22,7 +22,7 @@ def search_test(t, key):
 
 
 def spline(x, y, p=2):  # implementazione bspline al fine di approssimare l'andamento dei grafici
-    bspl = splrep(x, y, p)
+    bspl = splrep(x, y, s=p)
     s = splev(x, bspl)
     return s
 
@@ -68,10 +68,10 @@ def test(shuffle=False, m=100):
         plt.title("Confronto tempi inserimento: caso peggiore")
 
     plot_2 = plt.figure(2)
-    plt.plot(x, spline(x, search_time))
-    plt.plot(x, spline(x, search_rb_time))
+    plt.plot(x, spline(x, search_time)*1000)
+    plt.plot(x, spline(x, search_rb_time)*1000)
     plt.xlabel("Numero di nodi")
-    plt.ylabel("Tempo di ricerca (in s)")
+    plt.ylabel("Tempo di ricerca (in millis)")
     plt.legend(["ABR", "ARN"])
     if shuffle:
         plt.title("Confronto tempi ricerca: array randomizzato")
@@ -105,7 +105,7 @@ def test(shuffle=False, m=100):
 
 
 def main():
-    # test()
+    test()
     test(True)
 
 
