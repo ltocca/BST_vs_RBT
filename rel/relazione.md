@@ -40,8 +40,9 @@ In un albero rosso-nero sono soddisfatte le seguenti proprietà:
 
 - Tutti i cammini da ogni nodo alle sue foglie contengono lo stesso numero di nodi neri
 
-Gli ARN garantiscono la non-esistenza di un qualsiasi cammino dalla radice ad una foglia qualsiasi che sia lungo più del doppio di qualsiasi altro. Ciò, insieme all'ultima proprietà che fa in modo che i nodi neri siano distributi nello stesso modo in tutti i cammini, rendono un ARN *bilanciato*
+Gli ARN garantiscono la non-esistenza di un qualsiasi cammino dalla radice ad una foglia qualsiasi che sia lungo più del doppio di qualsiasi altro. Ciò, insieme all'ultima proprietà che fa in modo che i nodi neri siano distribuiti nello stesso modo in tutti i cammini, rendono un ARN *bilanciato.*
+Per un nodo di un albero rosso-nero è possibile definire due tipi di altezze: $h(x)$, che rappresenta l'altezza del nodo x, ovvero il numero di archi nel cammino più lungo fino ad una foglia; $bh(x)$ o *altezza nera*, pari al numero dei nodi neri (inclusa T.nil ed escluso x) nel cammino da x alla foglia.
 
 # Teoria a base degli esperimenti
 
-   
+   L'altezza di un ABR (e di conseguenza il bilanciamento dell'albero) dipende dall'ordine di inserimento dei nodi: nel caso in cui si inseriscano i nodi in ordine (sia crescente che decrescente) abbiamo il caso peggiore, e l'altezza $h$ è pari al numero di nodi n. Il caso migliore si ha quando abbiamo
