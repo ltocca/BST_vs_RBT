@@ -28,8 +28,6 @@ def spline(x, y, p=2):  # implementazione bspline al fine di approssimare l'anda
 
 
 def test(shuffle=False, m=100):
-    t = BST()
-    t_rb = RBT()
     height = []
     height_rb = []
     ins_time = []
@@ -38,6 +36,8 @@ def test(shuffle=False, m=100):
     search_rb_time = []
 
     for i in range(1, m):
+        t = BST()
+        t_rb = RBT()
         n = i * 1000
         print("Il numero di chiavi è pari a: ", n)
         keys = np.arange(n)
@@ -57,8 +57,8 @@ def test(shuffle=False, m=100):
     x = np.arange(1, len(ins_time) + 1) * 1000
 
     plot_1 = plt.figure(1)
-    plt.plot(x, spline(x, ins_time, 3))
-    plt.plot(x, spline(x, ins_rb_time, 3))
+    plt.plot(x, ins_time)
+    plt.plot(x, ins_rb_time)
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di inserimento (in s)")
     plt.legend(["ABR", "ARN"])
@@ -68,8 +68,8 @@ def test(shuffle=False, m=100):
         plt.title("Confronto tempi inserimento: caso peggiore")
 
     plot_2 = plt.figure(2)
-    plt.plot(x, spline(x, search_time)*1000)
-    plt.plot(x, spline(x, search_rb_time)*1000)
+    plt.plot(x, search_time)
+    plt.plot(x, search_rb_time)
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di ricerca (in millis)")
     plt.legend(["ABR", "ARN"])
