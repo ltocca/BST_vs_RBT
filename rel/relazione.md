@@ -47,7 +47,7 @@ Per un nodo di un albero rosso-nero è possibile definire due tipi di altezze: $
 
 Le operazioni che non vanno a modificare l'albero, come ad esempio la ricerca di un nodo sia per l'ABR che per l'ARN impiegano un tempo pari ad $\mathcal{O}(h)$, quindi hanno un costo proporzionale all'altezza dell'albero stesso. 
 
-Nel caso peggiore per un albero binario di ricerca (che ricordiamo avvenire nel caso di un inserimento in ordine, con conseguente sbilanciamento dell'albero) abbiamo che l'altezza $h$ è pari al numero di nodi n - 1. Quindi tutte e tre le operazioni, nel caso peggiore per gli alberi binari di ricerca, necessitano di un tempo pari aa $\mathcal{O}(n)$. Per alcune permutazioni dell’ordine degli inserimenti, l’albero risulta perfettamente bilanciato e $h = \mathcal{O}(lg(n))$. L’altezza è proporzionale al logaritmo del numero di nodi: ciò a grandi linee vale anche per gli inserimenti randomici, anche se con delle costanti di tempo maggiori.
+Nel caso peggiore per un albero binario di ricerca (che ricordiamo avvenire nel caso di un inserimento in ordine, con conseguente sbilanciamento dell'albero) abbiamo che l'altezza $h$ è pari al numero di nodi n - 1. Quindi tutte e tre le operazioni, nel caso peggiore per gli alberi binari di ricerca, necessitano di un tempo pari a $\mathcal{O}(n)$. Per alcune permutazioni dell’ordine degli inserimenti, l’albero risulta perfettamente bilanciato e $h = \mathcal{O}(lg(n))$. L’altezza è proporzionale al logaritmo del numero di nodi: ciò a grandi linee vale anche per gli inserimenti randomici, anche se con delle costanti di tempo maggiori.
 
 Per quanto riguarda gli alberi rosso-neri, grazie alle loro proprietà riguardanti l'altezza, nel caso peggiore gli algoritmi impiegano un tempo pari a $\mathcal{O}(lg(n))$. Nel caso migliore
 
@@ -92,3 +92,10 @@ L'esperimento è stato svolto su un computer con le seguenti caratteristiche:
 ![](../img/rand/h.png)
 
 # Commento e conclusioni
+
+Come possiamo vedere dai grafici, nel caso peggiore l'albero binario di ricerca ha delle performance peggiori, soprattutto nell'altezza, che da definizione è pari a $\mathcal{O}(n)$. Anche per l'inserimento e per la ricerca gli alberi rosso-neri impiegano un tempo decisamente minore rispetto agli alberi binari di ricerca.
+
+Passando invece all'inserimento randomizzato, la differenza tra le due strutture si assottiglia notevolmente, anche nel caso della ricerca, rispettando la complessità $\mathcal{O}(logn)$.
+Si nota tuttavia un miglioramento importante nelle altezze degli alberi binari di ricerca, avvicindandosi a quelle degli alberi rosso-neri.
+
+In conclusione, risulta preferibile l'implementazione di alberi rosso-neri, a scapito di una maggiore semplicità di realizzazione degli ARN.
