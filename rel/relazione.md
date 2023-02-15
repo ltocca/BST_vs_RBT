@@ -41,8 +41,17 @@ In un albero rosso-nero sono soddisfatte le seguenti proprietà:
 - Tutti i cammini da ogni nodo alle sue foglie contengono lo stesso numero di nodi neri
 
 Gli ARN garantiscono la non-esistenza di un qualsiasi cammino dalla radice ad una foglia qualsiasi che sia lungo più del doppio di qualsiasi altro. Ciò, insieme all'ultima proprietà che fa in modo che i nodi neri siano distribuiti nello stesso modo in tutti i cammini, rendono un ARN *bilanciato.*
-Per un nodo di un albero rosso-nero è possibile definire due tipi di altezze: $h(x)$, che rappresenta l'altezza del nodo x, ovvero il numero di archi nel cammino più lungo fino ad una foglia; $bh(x)$ o *altezza nera*, pari al numero dei nodi neri (inclusa T.nil ed escluso x) nel cammino da x alla foglia.
+Per un nodo di un albero rosso-nero è possibile definire due tipi di altezze: $h(x)$, che rappresenta l'altezza del nodo x, ovvero il numero di archi nel cammino più lungo fino ad una foglia; $bh(x)$ o *altezza nera*, pari al numero dei nodi neri (inclusa T.nil ed escluso x) nel cammino da x alla foglia. Queste servono a definire l'altezza di un albero rosso-nero con n nodi interni (ovvero con almeno una foglia): $h \leq 2 \lg(n+1)$
 
 # Teoria a base degli esperimenti
 
-   L'altezza di un ABR (e di conseguenza il bilanciamento dell'albero) dipende dall'ordine di inserimento dei nodi: nel caso in cui si inseriscano i nodi in ordine (sia crescente che decrescente) abbiamo il caso peggiore, e l'altezza $h$ è pari al numero di nodi n. Il caso migliore si ha quando abbiamo
+Le operazioni che non vanno a modificare l'albero, come ad esempio la ricerca di un nodo sia per l'ABR che per l'ARN impiegano un tempo pari ad $\mathcal{O}(h)$, quindi hanno un costo proporzionale all'altezza dell'albero stesso. 
+
+Nel caso peggiore per un albero binario di ricerca (che ricordiamo essere quando l'inserimento viene fatto in ordine, e quindi l'albero è sbilanciato a destra o a sinistra) abbiamo che l'altezza è pari al numero di nodi n - 1, quindi $\mathcal{O}(n)$
+
+Per l’Albero Binario di Ricerca (ABR), nel caso in cui i dati vengono inseriti in ordine, si ha $h = n-1$, quindi per ogni operazione il costo massimo è $O(n)$. Per alcune permutazioni dell’ordine degli inserimenti, l’albero viene perfettamente bilanciato e $h = O(lg(n))$. L’altezza è proporzionale al logaritmo del numero di nodi, anche se gli inserimenti vengono fatti in ordine casuale, solo che ci saranno costanti con valori
+più grandi del caso precedente. Per gli Alberi Rosso-Neri (ARN), grazie alle proprietà viste precedentemente, per ogni ordine di inserimento si ha $h = O(lg(n))$.
+
+Visto che il costo di un singolo inserimento è $O(h)$, il costo di $n$ inserimenti sarà $O(n*h)$, ovvero $O(n^2)$ oppure $O(n lg(n))$ a seconda del caso.
+
+# Descrizione ed implementazione degli esperimenti
