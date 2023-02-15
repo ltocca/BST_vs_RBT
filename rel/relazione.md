@@ -47,17 +47,48 @@ Per un nodo di un albero rosso-nero è possibile definire due tipi di altezze: $
 
 Le operazioni che non vanno a modificare l'albero, come ad esempio la ricerca di un nodo sia per l'ABR che per l'ARN impiegano un tempo pari ad $\mathcal{O}(h)$, quindi hanno un costo proporzionale all'altezza dell'albero stesso. 
 
-Nel caso peggiore per un albero binario di ricerca (che ricordiamo essere quando l'inserimento viene fatto in ordine, e quindi l'albero è sbilanciato a destra o a sinistra) abbiamo che l'altezza è pari al numero di nodi n - 1, quindi $\mathcal{O}(n)$
+Nel caso peggiore per un albero binario di ricerca (che ricordiamo avvenire nel caso di un inserimento in ordine, con conseguente sbilanciamento dell'albero) abbiamo che l'altezza $h$ è pari al numero di nodi n - 1. Quindi tutte e tre le operazioni, nel caso peggiore per gli alberi binari di ricerca, necessitano di un tempo pari aa $\mathcal{O}(n)$. Per alcune permutazioni dell’ordine degli inserimenti, l’albero risulta perfettamente bilanciato e $h = \mathcal{O}(lg(n))$. L’altezza è proporzionale al logaritmo del numero di nodi: ciò a grandi linee vale anche per gli inserimenti randomici, anche se con delle costanti di tempo maggiori.
 
-Per l’Albero Binario di Ricerca (ABR), nel caso in cui i dati vengono inseriti in ordine, si ha $h = n-1$, quindi per ogni operazione il costo massimo è $O(n)$. Per alcune permutazioni dell’ordine degli inserimenti, l’albero viene perfettamente bilanciato e $h = O(lg(n))$. L’altezza è proporzionale al logaritmo del numero di nodi, anche se gli inserimenti vengono fatti in ordine casuale, solo che ci saranno costanti con valori
-più grandi del caso precedente. Per gli Alberi Rosso-Neri (ARN), grazie alle proprietà viste precedentemente, per ogni ordine di inserimento si ha $h = O(lg(n))$.
+Per quanto riguarda gli alberi rosso-neri, grazie alle loro proprietà riguardanti l'altezza, nel caso peggiore gli algoritmi impiegano un tempo pari a $\mathcal{O}(lg(n))$. Nel caso migliore
 
-Visto che il costo di un singolo inserimento è $O(h)$, il costo di $n$ inserimenti sarà $O(n*h)$, ovvero $O(n^2)$ oppure $O(n lg(n))$ a seconda del caso.
+Dal momento che $\mathcal{O}(h)$ è il costo di un singolo inserimento di un nodo, il costo di $n$ inserimenti sarà pari a $\mathcal{O}(n*h)$,
 
 # Descrizione ed implementazione degli esperimenti
 
 Per confrontare queste due strutture dati, eseguiremo dei semplici test su due operazioni comuni: inserimento e ricerca di nodi. Inoltre, valuteremo anche l'altezza degli alberi risultanti.
 Tutto questo sarà valutato all'aumentare del numero di nodi n, partendo da 1000 fino ad arrivare a 100000. I test saranno effettuati ogni 1000 nodi aggiuntivi.
-Confronteremo gli ABR e gli ARN in base all'ordine in cui sono inseriti i nodi, considerando il "caso peggiore", ovvero con l'inserimento ordinato per determinare quanto più sia bilanciato l'albero rosso-nero rispetto all'albero binario di ricerca, e con un inserimento di nodi randomizzato per avvicinarci il più possibile al caso migliore per entrambi, anche se nel caso dell'ABR non abbiamo un albero completo.
+Confronteremo gli ABR e gli ARN in base all'ordine in cui sono inseriti i nodi, considerando il "caso peggiore", ovvero con l'inserimento ordinato per determinare quanto più sia bilanciato l'albero rosso-nero rispetto all'albero binario di ricerca, e con un inserimento dello stesso vettore di nodi del caso peggiore, ma randomizzato per avvicinarci il più possibile al caso migliore per entrambi, anche se nel caso dell'ABR non abbiamo un albero completo.
+Per quanto riguarda la ricerca, in entrambi i test viene generato un numero pseudorandomico compreso tra 1 e il numero di nodi della permutazione presa in considerazione, e ne viene effettuata la ricerca all'interno dell'albero.
 
-Il programma che esegue il test è composto da 3 file: due di questi, BST.py e RBT.py implementano le strutture dati e tutte le funzioni necessarie all'esperimento, tra cui anche le funzioni di trapianto e di "fixup" dell'inserimento per gli alberi rosso-neri. Infine abbiamo un file test.py che si occupa dello svolgimento dell'esperimento e della creazione dei grafici necessari alla visualizzazione dei risultati.
+Il programma che esegue il test è composto da 3 file python: due di questi, BST.py e RBT.py implementano le strutture dati e tutte le funzioni necessarie all'esperimento, tra cui anche le funzioni di trapianto e di "fixup" dell'inserimento per gli alberi rosso-neri. Infine abbiamo un file test.py che si occupa dello svolgimento dell'esperimento e della creazione dei grafici necessari alla visualizzazione dei risultati.
+
+L'esperimento è stato svolto su un computer con le seguenti caratteristiche:
+
+- Sistema operativo: Linux  Mint 21.1 con kernel 5.15
+
+- CPU: Inter Core i7-9750h
+
+- RAM: 16 GB 
+
+- Interprete Python: conda 22.11.1
+
+- IDE: Pycharm Community Edition 2022.3.2
+
+# Risultati dell'esperimento
+
+### Inserimento
+
+<img src="../img/w_case/ins.png" title="Figura 1" alt="" data-align="inline">
+<img src="../img/rand/ins.png" title="Figura 2" alt="" data-align="inline">
+
+### Ricerca
+
+<img src="../img/w_case/s.png" title="Figura 3" alt="" data-align="inline">
+<img src="../img/rand/s.png" title="Figura 4" alt="" data-align="inline">
+
+### Altezza
+
+![](../img/w_case/h.png)
+![](../img/rand/h.png)
+
+# Commento e conclusioni
