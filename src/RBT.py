@@ -53,9 +53,18 @@ class RBT:
         return self._t_max(self.root)
 
     def node_height(self, node):
-        if node is self.nil:
-            return 0
-        return 1 + max(self.node_height(node.right), self.node_height(node.left))
+        current_level = [node]
+        count = 0
+        while current_level:
+            next_level = list()
+            for n in current_level:
+                if n.left:
+                    next_level.append(n.left)
+                if n.right:
+                    next_level.append(n.right)
+            count += 1
+            current_level = next_level
+        return count
 
     def height(self):
         x = self.root
