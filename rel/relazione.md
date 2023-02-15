@@ -55,3 +55,9 @@ più grandi del caso precedente. Per gli Alberi Rosso-Neri (ARN), grazie alle pr
 Visto che il costo di un singolo inserimento è $O(h)$, il costo di $n$ inserimenti sarà $O(n*h)$, ovvero $O(n^2)$ oppure $O(n lg(n))$ a seconda del caso.
 
 # Descrizione ed implementazione degli esperimenti
+
+Per confrontare queste due strutture dati, eseguiremo dei semplici test su due operazioni comuni: inserimento e ricerca di nodi. Inoltre, valuteremo anche l'altezza degli alberi risultanti.
+Tutto questo sarà valutato all'aumentare del numero di nodi n, partendo da 1000 fino ad arrivare a 100000. I test saranno effettuati ogni 1000 nodi aggiuntivi.
+Confronteremo gli ABR e gli ARN in base all'ordine in cui sono inseriti i nodi, considerando il "caso peggiore", ovvero con l'inserimento ordinato per determinare quanto più sia bilanciato l'albero rosso-nero rispetto all'albero binario di ricerca, e con un inserimento di nodi randomizzato per avvicinarci il più possibile al caso migliore per entrambi, anche se nel caso dell'ABR non abbiamo un albero completo.
+
+Il programma che esegue il test è composto da 3 file: due di questi, BST.py e RBT.py implementano le strutture dati e tutte le funzioni necessarie all'esperimento, tra cui anche le funzioni di trapianto e di "fixup" dell'inserimento per gli alberi rosso-neri. Infine abbiamo un file test.py che si occupa dello svolgimento dell'esperimento e della creazione dei grafici necessari alla visualizzazione dei risultati.
