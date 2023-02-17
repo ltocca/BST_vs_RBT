@@ -27,7 +27,29 @@ def spline(x, y, p=2):  # implementazione bspline al fine di approssimare l'anda
     return s
 
 
-def test(shuffle=False, m=100):
+def exp_moving_averages(array):
+    x = 1  # fattore di correzione
+    ma = []  # vettore vuoto media
+    ma.append(array[0])
+    for i in range(1, len(array)):
+        window_average = round((x * array[i]) + (1 - x) * ma[-1], 2)
+        ma.append(window_average)
+    array = ma
+    return array
+
+
+def moving_averages(array):  # implementazione media mobile cumulativa
+    i = 1
+    ma = []
+    cum_sum = np.cumsum(array)
+    while i <= len(array):
+        window_average = round(cum_sum[i - 1] / i, 2)  # finestra di calcolo della media
+        ma.append(window_average)
+        i += 1  # shift della finestra di uno a destra
+    return ma
+
+
+def test(shuffle=False, m=100, nn=100):
     height = []
     height_rb = []
     ins_time = []
@@ -38,7 +60,7 @@ def test(shuffle=False, m=100):
     for i in range(1, m):
         t = BST()
         t_rb = RBT()
-        n = i * 1000
+        n = i * nn
         print("Il numero di chiavi è pari a: ", n)
         keys = np.arange(n)
         if shuffle:
@@ -54,11 +76,16 @@ def test(shuffle=False, m=100):
         height.append(t.height())
         height_rb.append(t_rb.height())
 
-    x = np.arange(1, len(ins_time) + 1) * 1000
+        insertion = moving_averages(ins_time)
+        insertion_rb = moving_averages(ins_rb_time)
+        h = moving_averages(height)
+        h_rb = moving_averages(height_rb)
+
+    x = np.arange(1, len(ins_time) + 1) * nn
 
     plot_1 = plt.figure(1)
-    plt.plot(x, ins_time)
-    plt.plot(x, ins_rb_time)
+    plt.plot(x, spline(x, insertion))
+    plt.plot(x, spline(x, insertion_rb))
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di inserimento (in s)")
     plt.legend(["ABR", "ARN"])
@@ -68,8 +95,8 @@ def test(shuffle=False, m=100):
         plt.title("Confronto tempi inserimento: caso peggiore")
 
     plot_2 = plt.figure(2)
-    plt.plot(x, search_time)
-    plt.plot(x, search_rb_time)
+    plt.plot(x, spline(x, h))
+    plt.plot(x, spline(x, h_rb))
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di ricerca (in millis)")
     plt.legend(["ABR", "ARN"])
@@ -105,8 +132,9 @@ def test(shuffle=False, m=100):
 
 
 def main():
-    test()
+    # test()
     test(True)
+    # test(True, 100, 1000)
 
 
 if __name__ == "__main__":
