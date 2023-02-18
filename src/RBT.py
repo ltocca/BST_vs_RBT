@@ -14,16 +14,6 @@ class ColouredNode:
     def set_colour(self, colour):
         self.colour = colour
 
-    def has_children(self) -> bool:
-        """ Returns a boolean indicating if the node has children """
-        return bool(self.get_children_count())
-
-    def get_children_count(self) -> int:
-        """ Returns the number of NOT NIL children the node has """
-        if self.colour == NIL:
-            return 0
-        return sum([int(self.left.colour != NIL), int(self.right.colour != NIL)])
-
 
 class RBT:
     def __init__(self):

@@ -44,12 +44,6 @@ class BST:
                 current_node.right = Node(key)
                 current_node.right.parent = current_node
 
-    """def insert(self, key):
-        if (self.root == None):
-            self.set_root(key)
-        else:
-            self.insert_node(self.root, key)"""
-
     def insert(self, key):
         x = self.root
         p = None
@@ -68,20 +62,6 @@ class BST:
         else:
             p.right = Node(key)
             p.right.parent = p
-
-    # def node_height(self, node):
-    #     if node.left is not None and node.right is not None:
-    #         return max(self.node_height(node.left), self.node_height(node.right)) + 1
-    #     if node.left is None and node.right is not None:
-    #         return self.node_height(node.right) + 1
-    #     if node.left is not None and node.right is None:
-    #         return self.node_height(node.left) + 1
-    #     return 0
-
-    # def node_height(self, node):
-    #     if node is None:
-    #         return 0
-    #     return 1 + max(self.node_height(node.left), self.node_height(node.right))
 
     def node_height(self, node):
         current_level = [node]
