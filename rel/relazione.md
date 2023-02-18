@@ -1,7 +1,7 @@
 ---
 author:
 - Leonardo Toccafondi   
-date: February 14, 2022
+date: February 2023
 title: Alberi binari di ricerca e alberi rosso-neri
 ---
 
