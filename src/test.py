@@ -21,7 +21,7 @@ def search_test(t, key):
     return round(end - start, 8)
 
 
-def spline(x, y, p=2):  # implementazione bspline al fine di approssimare l'andamento dei grafici
+def spline(x, y, p=2.0):  # implementazione bspline al fine di approssimare l'andamento dei grafici
     bspl = splrep(x, y, s=p)
     s = splev(x, bspl)
     return s
@@ -76,16 +76,18 @@ def test(shuffle=False, m=100, nn=100):
         height.append(t.height())
         height_rb.append(t_rb.height())
 
-        insertion = moving_averages(ins_time)
-        insertion_rb = moving_averages(ins_rb_time)
-        h = moving_averages(height)
-        h_rb = moving_averages(height_rb)
+        insertion = exp_moving_averages(ins_time)
+        insertion_rb = exp_moving_averages(ins_rb_time)
+        s = exp_moving_averages(search_time)
+        s_rb = exp_moving_averages(search_rb_time)
+        h = exp_moving_averages(height)
+        h_rb = exp_moving_averages(height_rb)
 
     x = np.arange(1, len(ins_time) + 1) * nn
 
     plot_1 = plt.figure(1)
-    plt.plot(x, spline(x, insertion))
-    plt.plot(x, spline(x, insertion_rb))
+    plt.plot(x ,spline(x, insertion, 0.005))
+    plt.plot(x ,spline(x, insertion_rb, 0.005))
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di inserimento (in s)")
     plt.legend(["ABR", "ARN"])
@@ -95,8 +97,8 @@ def test(shuffle=False, m=100, nn=100):
         plt.title("Confronto tempi inserimento: caso peggiore")
 
     plot_2 = plt.figure(2)
-    plt.plot(x, spline(x, h))
-    plt.plot(x, spline(x, h_rb))
+    plt.plot(x, spline(x, s))
+    plt.plot(x, spline(x, s_rb))
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di ricerca (in millis)")
     plt.legend(["ABR", "ARN"])
@@ -106,8 +108,8 @@ def test(shuffle=False, m=100, nn=100):
         plt.title("Confronto tempi ricerca: caso peggiore")
 
     plot_3 = plt.figure(3)
-    plt.plot(x, height)
-    plt.plot(x, height_rb)
+    plt.plot(x, spline(x, h))
+    plt.plot(x, spline(x, h_rb))
     plt.xlabel("Numero di nodi")
     plt.ylabel("Altezza")
     plt.legend(["ABR", "ARN"])
@@ -117,13 +119,14 @@ def test(shuffle=False, m=100, nn=100):
         plt.title("Confronto altezze: caso peggiore")
 
     if shuffle:
-        plot_1.savefig('img/rand/ins.png')
-        plot_2.savefig('img/rand/s.png')
-        plot_3.savefig('img/rand/h.png')
+        plot_1.savefig('img/rand/ins_' + str(m*nn) +'.png')
+        plot_2.savefig('img/rand/s_' + str(m*nn)+'.png')
+        plot_3.savefig('img/rand/h_' + str(m*nn) +'.png')
+
     else:
-        plot_1.savefig('img/w_case/ins.png')
-        plot_2.savefig('img/w_case/s.png')
-        plot_3.savefig('img/w_case/h.png')
+        plot_1.savefig('img/w_case/ins_' + str(m*nn) +'.png')
+        plot_2.savefig('img/w_case/s_' + str(m*nn) +'.png')
+        plot_3.savefig('img/w_case/h_' + str(m*nn) +'.png')
 
     plt.clf()
     plot_1.clear()
@@ -132,9 +135,10 @@ def test(shuffle=False, m=100, nn=100):
 
 
 def main():
-    # test()
+    test()
     test(True)
-    # test(True, 100, 1000)
+    test(False, 100, 1000)
+    test(True, 100, 1000)
 
 
 if __name__ == "__main__":
