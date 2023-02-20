@@ -74,7 +74,7 @@ Il programma che esegue il test è composto da 3 file python:
 
 - BST.py:  contiene l'implementazione dell'albero binario di ricerca. All'interno del file si trova una classe Node, che rappresenta un nodo dell'ABR e che quindi contiene tutti i campi necessari; ed una classe BST, (caratterizzata da un solo attributo root) che implementa le funzioni di inserimento, cancellazione, altezza e *trapianto* dell'albero binario di ricerca.
 - RBT.py: contiene l'implementazione dell'albero rosso-nero. Il file contiene sia una classe Node, che rapprensenta un nodo dell'ARN (quindi non solo la chiave, il nodo padre e i figli, ma anche il *colore*), mentre invece la classe RBT implementa un albero rosso-nero con tutte le sue funzioni: inserimento, ricerca di un nodo, rotazioni e *"fixup"* del colore.
-- test.py: si occupa dello svolgimento dell'esperimento (utilizzando matplotlib, numpy) e della creazione dei grafici necessari alla visualizzazione dei risultati.
+- test.py: si occupa dello svolgimento dell'esperimento (utilizzando matplotlib, numpy) e della creazione dei grafici necessari alla visualizzazione dei risultati. Viene inoltre calcolata la *media mobile cumulativa* ad ogni misurazione. Ciò viene fatto, insieme ad un calcolo di una b-spline prima del plotting, al fine di *smussare* i grafici.
 
 #### Ambiente di test
 
@@ -94,26 +94,38 @@ L'esperimento è stato svolto su un computer con le seguenti caratteristiche:
 
 ### Inserimento
 
-<p align="left"><img src="../img/w_case/ins.png" title="Figura 1" alt="" data-align="inline"></p>
-<img src="../img/rand/ins.png" title="Figura 2" alt="" data-align="inline">
+#### 10000 nodi
+
+![Alt text](../img/w_case/ins_10000.png "Figura 1 - Caso peggiore")
+![Alt text](../img/rand/ins_10000.png "Figura 2 - Caso migliore")
+
+#### 100000 nodi
+
+![Alt text](../img/w_case/ins_100000.png "Figura 3 - Caso peggiore")
+![Alt text](../img/rand/ins_100000.png "Figura 4 - Caso migliore")
 
 ### Ricerca
 
-<img src="../img/w_case/s.png" title="Figura 3" alt="" data-align="inline">
-<img src="../img/rand/s.png" title="Figura 4" alt="" data-align="inline">
+#### 10000 nodi
+
+![Alt text](../img/w_case/s_10000.png "Figura 5 - Caso peggiore")
+![Alt text](../img/rand/s_10000.png "Figura 6 - Caso migliore")
+
+#### 100000 nodi
+
+![Alt text](../img/w_case/s_100000.png "Figura 7 - Caso peggiore")
+![Alt text](../img/rand/s_100000.png "Figura 8 - Caso migliore")
 
 ### Altezza
 
-![](../img/w_case/h.png)
-![](../img/rand/h.png)
-
-### Risultati esperimento 10000 nodi
+![Alt text](../img/w_case/h_100000.png "Figura 7 - Caso peggiore")
+![Alt text](../img/rand/h_100000.png "Figura 8 - Caso migliore")
 
 # Commento e conclusioni
 
 Come possiamo vedere dai grafici, nel caso peggiore l'albero binario di ricerca ha delle performance peggiori, soprattutto nell'altezza, che da definizione è pari a ${O}(n)$. Anche per l'inserimento e per la ricerca gli alberi rosso-neri impiegano un tempo decisamente minore rispetto agli alberi binari di ricerca.
 
-Passando invece all'inserimento randomizzato, la differenza tra le due strutture si assottiglia notevolmente, anche nel caso della ricerca, rispettando la complessità ${O}(logn)$.
-Si nota tuttavia un miglioramento importante nelle altezze degli alberi binari di ricerca, avvicindandosi a quelle degli alberi rosso-neri.
+Passando invece all'inserimento randomizzato, la differenza tra le due strutture si assottiglia notevolmente, anche nel caso della ricerca, rispettando la complessità ${O}(logn)$. Per quanto riguarda l'inserimento, sia per quanto riguarda il caso con 10000 nodi, sia quello con 100000, gli alberi rosso-neri hanno una performance sempre in linea con i valori prospettati, ma comunque peggiore (anche se non di molto) rispetto all'inserimento in un albero binario di ricerca.
+Si nota tuttavia un miglioramento importante nelle altezze degli alberi binari di ricerca, avvicindandosi *notevolmente* a quelle degli alberi rosso-neri.
 
 In conclusione, risulta preferibile l'implementazione di alberi rosso-neri, a scapito di una maggiore semplicità di realizzazione degli ARN.
