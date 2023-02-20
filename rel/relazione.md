@@ -96,30 +96,30 @@ L'esperimento è stato svolto su un computer con le seguenti caratteristiche:
 
 #### 10000 nodi
 
-<img src="../img/w_case/ins_10000.png" title="Figura 1" alt="" data-align="inline">
-<img src="../img/rand/ins_10000.png" title="Figura 2" alt="" data-align="inline">
+![Alt text](../img/w_case/ins_10000.png "Figura 1 - Caso peggiore")
+![Alt text](../img/rand/ins_10000.png "Figura 2 - Caso migliore")
 
 #### 100000 nodi
 
-<img src="../img/w_case/ins_100000.png" title="Figura 3" alt="" data-align="inline">
-<img src="../img/rand/ins_100000.png" title="Figura 4" alt="" data-align="inline">
+![Alt text](../img/w_case/ins_100000.png "Figura 3 - Caso peggiore")
+![Alt text](../img/rand/ins_100000.png "Figura 4 - Caso migliore")
 
 ### Ricerca
 
 #### 10000 nodi
 
-<img src="../img/w_case/s_10000.png" title="Figura 5" alt="" data-align="inline">
-<img src="../img/rand/s_10000.png" title="Figura 6" alt="" data-align="inline">>
+![Alt text](../img/w_case/s_10000.png "Figura 5 - Caso peggiore")
+![Alt text](../img/rand/s_10000.png "Figura 6 - Caso migliore")
 
 #### 100000 nodi
 
-<img src="../img/w_case/s_100000.png" title="Figura 7" alt="" data-align="inline">
-<img src="../img/rand/s_100000.png" title="Figura 8" alt="" data-align="inline">
+![Alt text](../img/w_case/s_100000.png "Figura 7 - Caso peggiore")
+![Alt text](../img/rand/s_100000.png "Figura 8 - Caso migliore")
 
 ### Altezza
 
-<img src="../img/w_case/h_10000.png" title="Figura 9" alt="" data-align="inline">
-<img src="../img/rand/h_10000.png" title="Figura 10" alt="" data-align="inline">
+![Alt text](../img/w_case/h_100000.png "Figura 7 - Caso peggiore")
+![Alt text](../img/rand/h_100000.png "Figura 8 - Caso migliore")
 
 # Commento e conclusioni
 
