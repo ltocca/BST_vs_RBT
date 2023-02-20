@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.10)  20 FEB 2023 11:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.10)  20 FEB 2023 11:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -394,11 +394,7 @@ File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count289
 \l__pdf_internal_box=\box53
 )
-(./relazione.aux
-
-LaTeX Warning: Label `fig:4' multiply defined.
-
-)
+(./relazione.aux)
 \openout1 = `relazione.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
@@ -541,28 +537,34 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
  (/usr/share/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-[2] [3]
+[2]
+Underfull \hbox (badness 1552) in paragraph at lines 234--239
+[]\T1/lmr/m/n/10 (+20) BST.py: con-tiene l'implementazione dell'albero bi-na-ri
+o di ricerca.
+ []
+
+[3]
 <../../img/w_case/ins_10000.png, id=43, 462.528pt x 346.896pt>
 File: ../../img/w_case/ins_10000.png Graphic file (type png)
 <use ../../img/w_case/ins_10000.png>
-Package pdftex.def Info: ../../img/w_case/ins_10000.png  used on input line 283
+Package pdftex.def Info: ../../img/w_case/ins_10000.png  used on input line 284
 .
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
 <../../img/rand/ins_10000.png, id=45, 462.528pt x 346.896pt>
 File: ../../img/rand/ins_10000.png Graphic file (type png)
 <use ../../img/rand/ins_10000.png>
-Package pdftex.def Info: ../../img/rand/ins_10000.png  used on input line 286.
+Package pdftex.def Info: ../../img/rand/ins_10000.png  used on input line 287.
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
 <../../img/w_case/ins_100000.png, id=46, 462.528pt x 346.896pt>
 File: ../../img/w_case/ins_100000.png Graphic file (type png)
 <use ../../img/w_case/ins_100000.png>
 Package pdftex.def Info: ../../img/w_case/ins_100000.png  used on input line 29
-6.
+7.
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
 <../../img/rand/ins_100000.png, id=47, 462.528pt x 346.896pt>
 File: ../../img/rand/ins_100000.png Graphic file (type png)
 <use ../../img/rand/ins_100000.png>
-Package pdftex.def Info: ../../img/rand/ins_100000.png  used on input line 299.
+Package pdftex.def Info: ../../img/rand/ins_100000.png  used on input line 300.
 
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
  [4 <../../img/w_case/ins_10000.png> <../../img/rand/ins_10000.png> <../../img/
@@ -570,61 +572,57 @@ w_case/ins_100000.png> <../../img/rand/ins_100000.png>]
 <../../img/w_case/s_10000.png, id=64, 462.528pt x 346.896pt>
 File: ../../img/w_case/s_10000.png Graphic file (type png)
 <use ../../img/w_case/s_10000.png>
-Package pdftex.def Info: ../../img/w_case/s_10000.png  used on input line 313.
+Package pdftex.def Info: ../../img/w_case/s_10000.png  used on input line 314.
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
 <../../img/rand/s_10000.png, id=65, 462.528pt x 346.896pt>
 File: ../../img/rand/s_10000.png Graphic file (type png)
 <use ../../img/rand/s_10000.png>
-Package pdftex.def Info: ../../img/rand/s_10000.png  used on input line 316.
+Package pdftex.def Info: ../../img/rand/s_10000.png  used on input line 317.
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
 <../../img/w_case/s_100000.png, id=66, 462.528pt x 346.896pt>
 File: ../../img/w_case/s_100000.png Graphic file (type png)
 <use ../../img/w_case/s_100000.png>
-Package pdftex.def Info: ../../img/w_case/s_100000.png  used on input line 326.
+Package pdftex.def Info: ../../img/w_case/s_100000.png  used on input line 327.
 
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
 <../../img/rand/s_100000.png, id=67, 462.528pt x 346.896pt>
 File: ../../img/rand/s_100000.png Graphic file (type png)
 <use ../../img/rand/s_100000.png>
-Package pdftex.def Info: ../../img/rand/s_100000.png  used on input line 329.
+Package pdftex.def Info: ../../img/rand/s_100000.png  used on input line 330.
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
 <../../img/w_case/h_100000.png, id=68, 462.528pt x 346.896pt>
 File: ../../img/w_case/h_100000.png Graphic file (type png)
 <use ../../img/w_case/h_100000.png>
-Package pdftex.def Info: ../../img/w_case/h_100000.png  used on input line 341.
+Package pdftex.def Info: ../../img/w_case/h_100000.png  used on input line 342.
 
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
 <../../img/rand/h_100000.png, id=69, 462.528pt x 346.896pt>
 File: ../../img/rand/h_100000.png Graphic file (type png)
 <use ../../img/rand/h_100000.png>
-Package pdftex.def Info: ../../img/rand/h_100000.png  used on input line 344.
+Package pdftex.def Info: ../../img/rand/h_100000.png  used on input line 345.
 (pdftex.def)             Requested size: 137.99724pt x 103.49792pt.
  [5 <../../img/w_case/s_10000.png> <../../img/rand/s_10000.png> <../../img/w_ca
 se/s_100000.png> <../../img/rand/s_100000.png> <../../img/w_case/h_100000.png> 
-<../../img/rand/h_100000.png>] [6] (./relazione.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+<../../img/rand/h_100000.png>] [6] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
- 14239 strings out of 478238
- 229827 string characters out of 5850455
- 548353 words of memory out of 5000000
+ 14237 strings out of 478238
+ 229805 string characters out of 5850455
+ 548374 words of memory out of 5000000
  32113 multiletter control sequences out of 15000+600000
- 521774 words of font info for 123 fonts, out of 8000000 for 9000
+ 521680 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,8n,77p,1006b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf-dist/fo
-nts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy
-.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist
-/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf-dist/fonts/type1/public/lm/
-lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/
-texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf-dist/fonts/type1/
-public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></us
-r/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts
-/type1/public/lm/lmri10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10
-.pfb>
-Output written on relazione.pdf (6 pages, 463881 bytes).
+{/usr/share/texmf-dist/fo
+nts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
+}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist
+/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-math
+it.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
+f-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/lm/lmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb
+></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on relazione.pdf (6 pages, 463840 bytes).
 PDF statistics:
  182 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams
