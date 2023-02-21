@@ -11,14 +11,14 @@ def insertion_test(t, keys, n):
     for j in range(n):
         t.insert(keys[j])
     end = timer()
-    return round(end - start, 8)
+    return round(end - start, 4)
 
 
 def search_test(t, key):
     start = timer()
     t.find(key)
     end = timer()
-    return round(end - start, 8)
+    return round(end - start, 6)
 
 
 def spline(x, y, p=2.0):  # implementazione bspline al fine di approssimare l'andamento dei grafici
@@ -36,17 +36,6 @@ def exp_moving_averages(array):
         ma.append(window_average)
     array = ma
     return array
-
-
-def moving_averages(array):  # implementazione media mobile cumulativa
-    i = 1
-    ma = []
-    cum_sum = np.cumsum(array)
-    while i <= len(array):
-        window_average = round(cum_sum[i - 1] / i, 2)  # finestra di calcolo della media
-        ma.append(window_average)
-        i += 1  # shift della finestra di uno a destra
-    return ma
 
 
 def test(shuffle=False, m=100, nn=100):
@@ -78,16 +67,12 @@ def test(shuffle=False, m=100, nn=100):
 
         insertion = exp_moving_averages(ins_time)
         insertion_rb = exp_moving_averages(ins_rb_time)
-        s = exp_moving_averages(search_time)
-        s_rb = exp_moving_averages(search_rb_time)
-        h = exp_moving_averages(height)
-        h_rb = exp_moving_averages(height_rb)
 
     x = np.arange(1, len(ins_time) + 1) * nn
 
     plot_1 = plt.figure(1)
-    plt.plot(x ,spline(x, insertion, 0.005))
-    plt.plot(x ,spline(x, insertion_rb, 0.005))
+    plt.plot(x, spline(x, insertion))
+    plt.plot(x, spline(x, insertion_rb))
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di inserimento (in s)")
     plt.legend(["ABR", "ARN"])
@@ -97,10 +82,10 @@ def test(shuffle=False, m=100, nn=100):
         plt.title("Confronto tempi inserimento: caso peggiore")
 
     plot_2 = plt.figure(2)
-    plt.plot(x, spline(x, s))
-    plt.plot(x, spline(x, s_rb))
+    plt.plot(x, spline(x, search_time))
+    plt.plot(x, spline(x, search_rb_time))
     plt.xlabel("Numero di nodi")
-    plt.ylabel("Tempo di ricerca (in millis)")
+    plt.ylabel("Tempo di ricerca (s)")
     plt.legend(["ABR", "ARN"])
     if shuffle:
         plt.title("Confronto tempi ricerca: array randomizzato")
@@ -108,8 +93,8 @@ def test(shuffle=False, m=100, nn=100):
         plt.title("Confronto tempi ricerca: caso peggiore")
 
     plot_3 = plt.figure(3)
-    plt.plot(x, spline(x, h))
-    plt.plot(x, spline(x, h_rb))
+    plt.plot(x, height)
+    plt.plot(x, height_rb)
     plt.xlabel("Numero di nodi")
     plt.ylabel("Altezza")
     plt.legend(["ABR", "ARN"])
@@ -119,14 +104,14 @@ def test(shuffle=False, m=100, nn=100):
         plt.title("Confronto altezze: caso peggiore")
 
     if shuffle:
-        plot_1.savefig('img/rand/ins_' + str(m*nn) +'.png')
-        plot_2.savefig('img/rand/s_' + str(m*nn)+'.png')
-        plot_3.savefig('img/rand/h_' + str(m*nn) +'.png')
+        plot_1.savefig('img/rand/ins_' + str(m * nn) + '.png')
+        plot_2.savefig('img/rand/s_' + str(m * nn) + '.png')
+        plot_3.savefig('img/rand/h_' + str(m * nn) + '.png')
 
     else:
-        plot_1.savefig('img/w_case/ins_' + str(m*nn) +'.png')
-        plot_2.savefig('img/w_case/s_' + str(m*nn) +'.png')
-        plot_3.savefig('img/w_case/h_' + str(m*nn) +'.png')
+        plot_1.savefig('img/w_case/ins_' + str(m * nn) + '.png')
+        plot_2.savefig('img/w_case/s_' + str(m * nn) + '.png')
+        plot_3.savefig('img/w_case/h_' + str(m * nn) + '.png')
 
     plt.clf()
     plot_1.clear()
