@@ -38,14 +38,14 @@ def exp_moving_averages(array):
     return array
 
 
-def test(shuffle=False, m=100, nn=10):
+def test(shuffle=False, m=100, nn=10):  # 1000 nodi totali, con incrementi da 10
     height = []
     height_rb = []
     ins_time = []
     ins_rb_time = []
     search_time = []
     search_rb_time = []
-    n_means = 100
+    n_means = 100  # numero di test su cui calcolare media
 
     for i in range(1, m):
         t = BST()
@@ -80,6 +80,15 @@ def test(shuffle=False, m=100, nn=10):
         search_rb_time.append(np.mean(search_rb_time_m))
         height.append(np.mean(height_m))
         height_rb.append(np.mean(height_rb_m))
+
+        height_m.clear()
+        height_rb_m.clear()
+        ins_time_m.clear()
+        ins_rb_time_m.clear()
+        search_time_m.clear()
+        search_rb_time_m.clear()
+
+
 
     x = np.arange(1, len(ins_time) + 1) * nn
 
