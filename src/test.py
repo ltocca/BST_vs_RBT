@@ -38,41 +38,54 @@ def exp_moving_averages(array):
     return array
 
 
-def test(shuffle=False, m=100, nn=100):
+def test(shuffle=False, m=100, nn=10):
     height = []
     height_rb = []
     ins_time = []
     ins_rb_time = []
     search_time = []
     search_rb_time = []
+    n_means = 100
 
     for i in range(1, m):
         t = BST()
         t_rb = RBT()
+        height_m = []
+        height_rb_m = []
+        ins_time_m = []
+        ins_rb_time_m = []
+        search_time_m = []
+        search_rb_time_m = []
         n = i * nn
         print("Il numero di chiavi è pari a: ", n)
         keys = np.arange(n)
         if shuffle:
             np.random.shuffle(keys)
 
-        ins_time.append(insertion_test(t, keys, n))
-        ins_rb_time.append(insertion_test(t_rb, keys, n))
+        for j in range(n_means):
 
-        x = np.random.randint(n)
-        search_time.append(search_test(t, x))
-        search_rb_time.append(search_test(t_rb, x))
+            ins_time_m.append(insertion_test(t, keys, n))
+            ins_rb_time_m.append(insertion_test(t_rb, keys, n))
 
-        height.append(t.height())
-        height_rb.append(t_rb.height())
+            x = np.random.randint(n)
+            search_time_m.append(search_test(t, x))
+            search_rb_time_m.append(search_test(t_rb, x))
 
-        insertion = exp_moving_averages(ins_time)
-        insertion_rb = exp_moving_averages(ins_rb_time)
+            height_m.append(t.height())
+            height_rb_m.append(t_rb.height())
+
+        ins_time.append(np.mean(ins_time_m))
+        ins_rb_time.append(np.mean(ins_rb_time_m))
+        search_time.append(np.mean(search_time_m))
+        search_rb_time.append(np.mean(search_rb_time_m))
+        height.append(np.mean(height_m))
+        height_rb.append(np.mean(height_rb_m))
 
     x = np.arange(1, len(ins_time) + 1) * nn
 
     plot_1 = plt.figure(1)
-    plt.plot(x, spline(x, insertion))
-    plt.plot(x, spline(x, insertion_rb))
+    plt.plot(x, ins_time)
+    plt.plot(x, ins_rb_time)
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di inserimento (in s)")
     plt.legend(["ABR", "ARN"])
@@ -82,8 +95,8 @@ def test(shuffle=False, m=100, nn=100):
         plt.title("Confronto tempi inserimento: caso peggiore")
 
     plot_2 = plt.figure(2)
-    plt.plot(x, spline(x, search_time))
-    plt.plot(x, spline(x, search_rb_time))
+    plt.plot(x, search_time)
+    plt.plot(x, search_rb_time)
     plt.xlabel("Numero di nodi")
     plt.ylabel("Tempo di ricerca (s)")
     plt.legend(["ABR", "ARN"])
@@ -122,8 +135,6 @@ def test(shuffle=False, m=100, nn=100):
 def main():
     test()
     test(True)
-    test(False, 100, 1000)
-    test(True, 100, 1000)
 
 
 if __name__ == "__main__":
